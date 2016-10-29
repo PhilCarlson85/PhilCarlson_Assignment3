@@ -3,7 +3,7 @@
  */
 
 var mongoose = require('mongoose');
-var Loc = mongoose.model('restaurants');
+var Res = mongoose.model('Restaurant');
 
 module.exports.restaurantsCreate = function (req, res) {
     res.status(200);
