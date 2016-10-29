@@ -1,7 +1,6 @@
 /*
  * Created by Phil on 10/24/16. Example page 169
  */
-
 var express = require('express');
 var router = express.Router();
 var ctrlRestaurants = require('../controllers/restaurants');
