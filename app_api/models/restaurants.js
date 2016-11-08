@@ -1,6 +1,6 @@
-/* restaurants.js = "locations.js"
+/* restaurants.js"
  **restaurantSchema?
-
+IS THIS SCHEMA CODED OK?
  */
 
 var mongoose = require( 'mongoose' );
@@ -12,4 +12,4 @@ var restaurantSchema = new mongoose.Schema({
     restaurant_id: Number,
 });
 
-mongoose.model('Restaurant', restaurantSchema);
+mongoose.model('Restaurants', restaurantSchema);

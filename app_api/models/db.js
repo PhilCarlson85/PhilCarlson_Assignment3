@@ -3,7 +3,7 @@
 var mongoose = require( 'mongoose' );
 var gracefulShutdown;
 /* VERIFY THIS CONNECTION: Need to make sure you have the right URI linked through this page and app.js */
-var dbURI = 'mongodb://localhost/PhilCarlson_Assignment3';
+var dbURI = 'mongodb://localhost/restaurants';
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
@@ -45,8 +45,6 @@ process.on('SIGTERM', function() {
     });
 });
 
-
-if (process.env.NODE)
 
 //Check into this so that the naming is correct (in the book it was ./locations)
 require('./restaurants');

@@ -5,11 +5,12 @@ var express = require('express');
 var router = express.Router();
 var ctrlRestaurants = require('../controllers/restaurants');
 
-// restaurants
+// restaurants*** none of these match up with restaurants create
+
 router.get('/restaurants', ctrlRestaurants.restaurantsListAll);
-router.get('/restaurants/5069b47aa892630aae000001', ctrlRestaurants.restaurantsRetrieveId);
-router.post('/wines', ctrlRestaurants.restaurantsAddNew);
-router.put('/restaurants/5069b47aa892630aae000001', ctrlRestaurants.restaurantsUpdateId);
-router.delete('/restaurants/5069b47aa892630aae000001', ctrlRestaurants.restaurantsDeleteOne);
+router.get('/restaurants/:id', ctrlRestaurants.restaurantsRetrieveId);
+router.post('/restaurants', ctrlRestaurants.restaurantsCreate);
+router.put('/restaurants/:id', ctrlRestaurants.restaurantsUpdateId);
+router.delete('/restaurants/:id', ctrlRestaurants.restaurantsDeleteOne);
 
 module.exports = router;
