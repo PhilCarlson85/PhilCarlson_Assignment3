@@ -28,14 +28,55 @@ module.exports.restaurantsRetrieveId = function (req, res) {
         });
 };
 
-module.exports.restaurantsDeleteOne = function (req, res) {
-    sendJsonResponse(res, 200, {"status" : "success"});
+module.exports.restaurantsCreate = function (req, res) {
+    Res
+        .create({
+                name: req.body,
+                address: req.body.address,
+            }, function (err, restaurant) {
+                if (err) {
+                    sendJsonResponse(res, 400, err);
+                } else {
+                    sendJsonResponse(res, 201, restaurant);
+                }
+            }
+        )
 };
 
-module.exports.restaurantsCreate = function (req, res) {
-    sendJsonResponse(res, 200, {"status" : "success"});
+module.exports.restaurantsDeleteOne = function (req, res) {
+    var restaurantid = req.params.restaurantid;
+    if (restaurantid) {
+        Res
+            .findByIdAndRemove(restaurantid)
+            .exec(
+                function(err, restaurant) {
+                    if (err) {
+                        sendJsonResponse(res, 404, err);
+                        return;
+                    }
+                    sendJsonResponse(res, 204, null);
+                }
+            );
+    } else {
+        sendJsonResponse(res, 404, {
+            "message" : "No restaurantid"
+        });
+    }
 };
+
 
 module.exports.restaurantsUpdateId = function (req, res) {
-    sendJsonResponse(res, 200, {"status" : "success"});
+    Res
+        .findById(req.params.id)
+        .exec(
+            function (err, restaurant) {
+                restaurant.name = req.body.name;
+                restaurant.save(function(err, restaurant) {
+                    if (err) {
+                        sendJsonResponse(res, 404, err);
+                    } else {
+                        sendJsonResponse(res, 200, restaurant)}
+                    });
+          }
+     );
 };
